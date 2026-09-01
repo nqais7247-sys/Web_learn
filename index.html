@@ -1,71 +1,1582 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #df2424;
-            text-align: center;
-            padding-top: 100px;
-        }
+<meta charset="UTF-8">
 
-        .container {
-            background: rgb(243, 237, 65);
-            width: 500px;
-            margin: auto;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
 
-        h1 {
-            color: #333;
-        }
+<title>DIANA</title>
 
-        p {
-            color: #666;
-            font-size: 18px;
-        }
 
-        button {
-            padding: 12px 25px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+<!-- =========================================
+     LUXURY TYPOGRAPHY
+========================================= -->
 
-        #message {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Parisienne&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+body {
+
+    overflow: hidden;
+
+    background: #080405;
+
+    color: white;
+
+    font-family: "Montserrat", sans-serif;
+
+    touch-action: manipulation;
+
+}
+
+
+/* =====================================================
+   MAIN SCENE
+===================================================== */
+
+.scene {
+
+    position: relative;
+
+    width: 100%;
+    height: 100dvh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(128, 57, 70, 0.22),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(105, 40, 55, 0.16),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #16090d,
+            #070405 55%,
+            #12070b
+        );
+
+}
+
+
+/* =====================================================
+   CINEMATIC INTRO
+===================================================== */
+
+.intro-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 50%,
+            #1a0b10,
+            #030203 70%
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+
+}
+
+
+.intro-screen.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+/* cinematic horizontal light */
+
+.cinema-light {
+
+    position: absolute;
+
+    width: 180%;
+
+    height: 1px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 220, 220, 0.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 35px rgba(255,180,190,0.5);
+
+    transform:
+        scaleX(0);
+
+    animation:
+        cinemaLine 2.5s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+}
+
+
+@keyframes cinemaLine {
+
+    0% {
+
+        transform:
+            scaleX(0);
+
+        opacity: 0;
+
+    }
+
+    40% {
+
+        transform:
+            scaleX(1);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            scaleX(1);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* Intro text */
+
+.intro-title {
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size:
+        clamp(35px, 11vw, 70px);
+
+    letter-spacing:
+        14px;
+
+    font-weight: 400;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        introText 2s
+        cubic-bezier(.16,1,.3,1)
+        1s forwards;
+
+}
+
+
+.intro-small {
+
+    margin-top: 18px;
+
+    font-size: 7px;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(255,255,255,0.4);
+
+    opacity: 0;
+
+    animation:
+        fadeIn 2s ease 1.7s forwards;
+
+}
+
+
+@keyframes introText {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   GLASS ORB
+===================================================== */
+
+.glass {
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(255,255,255,0.17),
+            transparent 15%
+        ),
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.025),
+            rgba(255,255,255,0.005) 60%,
+            transparent 72%
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    box-shadow:
+
+        inset 10px 10px 40px
+        rgba(255,255,255,0.04),
+
+        inset -15px -15px 40px
+        rgba(0,0,0,0.4),
+
+        0 0 80px
+        rgba(178,100,110,0.08);
+
+    filter:
+        blur(0.2px);
+
+    opacity: 0;
+
+    animation:
+        glassAppear 3s ease 3s forwards;
+
+}
+
+
+@keyframes glassAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.6)
+            rotate(-20deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+
+    }
+
+}
+
+
+/* glass reflection */
+
+.glass::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 35px;
+
+    top: 35px;
+    left: 35px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.18),
+            transparent
+        );
+
+    transform:
+        rotate(-35deg);
+
+    filter:
+        blur(5px);
+
+}
+
+
+/* =====================================================
+   FLOWER
+===================================================== */
+
+.flower {
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    z-index: 2;
+
+    pointer-events: none;
+
+}
+
+
+/* flower center */
+
+.flower-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            #f4d6d1,
+            #8f4b56
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(232,160,165,0.5);
+
+}
+
+
+/* petals */
+
+.petal {
+
+    position: absolute;
+
+    width: 48px;
+    height: 82px;
+
+    left: 50%;
+    top: 50%;
+
+    transform-origin:
+        50% 100%;
+
+    transform:
+        translate(-50%,-100%)
+        rotate(var(--angle))
+        translateY(-12px)
+        scale(0);
+
+    border-radius:
+        70% 30% 70% 30%;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,220,220,0.48),
+            rgba(145,67,80,0.35)
+        );
+
+    border:
+        1px solid rgba(255,220,220,0.2);
+
+    box-shadow:
+        inset 5px 5px 12px
+        rgba(255,255,255,0.12),
+
+        0 0 20px
+        rgba(170,75,90,0.08);
+
+    backdrop-filter:
+        blur(3px);
+
+    animation:
+        bloom 2s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+    animation-delay:
+        var(--delay);
+
+}
+
+
+@keyframes bloom {
+
+    0% {
+
+        transform:
+            translate(-50%,-100%)
+            rotate(var(--angle))
+            translateY(-12px)
+            scale(0);
+
+        opacity: 0;
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translate(-50%,-100%)
+            rotate(var(--angle))
+            translateY(-12px)
+            scale(1);
+
+        opacity: 0.8;
+
+    }
+
+}
+
+
+/* =====================================================
+   FLOATING PETALS
+===================================================== */
+
+.petals {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+}
+
+
+.falling-petal {
+
+    position: absolute;
+
+    top: -50px;
+
+    width: 10px;
+    height: 17px;
+
+    border-radius:
+        80% 20% 80% 20%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,210,210,0.5),
+            rgba(130,55,68,0.2)
+        );
+
+    animation:
+        fall linear infinite;
+
+    opacity: 0;
+
+}
+
+
+@keyframes fall {
+
+    0% {
+
+        transform:
+            translate3d(0,-50px,0)
+            rotate(0deg)
+            scale(0.6);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 0.7;
+
+    }
+
+    50% {
+
+        transform:
+            translate3d(
+                40px,
+                50vh,
+                0
+            )
+            rotate(180deg)
+            scale(1);
+
+    }
+
+    100% {
+
+        transform:
+            translate3d(
+                -60px,
+                110vh,
+                0
+            )
+            rotate(360deg)
+            scale(0.7);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   LUXURY FRAME
+===================================================== */
+
+.frame {
+
+    position: absolute;
+
+    inset: 16px;
+
+    border:
+        1px solid rgba(240,200,200,0.18);
+
+    z-index: 10;
+
+    pointer-events: none;
+
+}
+
+
+.frame::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border:
+        1px solid rgba(255,255,255,0.035);
+
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.content {
+
+    position: relative;
+
+    z-index: 20;
+
+    text-align: center;
+
+    width: 100%;
+
+}
+
+
+/* top text */
+
+.pre-title {
+
+    font-size: 7px;
+
+    letter-spacing: 8px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(255,255,255,0.38);
+
+    opacity: 0;
+
+    animation:
+        fadeIn 2s ease 4s forwards;
+
+}
+
+
+/* =====================================================
+   NAME
+===================================================== */
+
+.name {
+
+    position: relative;
+
+    display: inline-block;
+
+    margin-top: 22px;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size:
+        clamp(75px, 23vw, 150px);
+
+    font-weight: 400;
+
+    letter-spacing:
+        clamp(4px, 1.5vw, 13px);
+
+    line-height: 0.8;
+
+    color:
+        #f8ece8;
+
+    opacity: 0;
+
+    transform:
+        translateY(40px)
+        scale(0.9);
+
+    cursor: pointer;
+
+    user-select: none;
+
+    animation:
+        nameEntrance 2.5s
+        cubic-bezier(.16,1,.3,1)
+        3.7s forwards;
+
+}
+
+
+@keyframes nameEntrance {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* animated reflection */
+
+.name::after {
+
+    content: "DIANA";
+
+    position: absolute;
+
+    inset: 0;
+
+    color: transparent;
+
+    background:
+
+        linear-gradient(
+            105deg,
+            transparent 15%,
+            rgba(255,255,255,0.8) 45%,
+            rgba(234,179,184,0.8) 50%,
+            transparent 65%
+        );
+
+    background-size:
+        250% 100%;
+
+    background-position:
+        180% 0;
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    animation:
+        reflection 6s
+        ease-in-out
+        6s infinite;
+
+}
+
+
+@keyframes reflection {
+
+    0% {
+
+        background-position:
+            180% 0;
+
+    }
+
+    25%,
+    100% {
+
+        background-position:
+            -100% 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   SCRIPT
+===================================================== */
+
+.script {
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-size: 26px;
+
+    color:
+        rgba(235,185,185,0.75);
+
+    margin-top: 25px;
+
+    opacity: 0;
+
+    animation:
+        fadeUp 2s ease 5s forwards;
+
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.divider {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 23px;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 2s ease 5.3s forwards;
+
+}
+
+
+.line {
+
+    width: 40px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(235,185,185,0.65)
+        );
+
+}
+
+
+.line.right {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(235,185,185,0.65),
+            transparent
+        );
+
+}
+
+
+.symbol {
+
+    color:
+        rgba(235,185,185,0.75);
+
+    font-size: 10px;
+
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.bottom {
+
+    position: absolute;
+
+    bottom: 34px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    z-index: 30;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 2s ease 6s forwards;
+
+}
+
+
+.bottom-script {
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-size: 18px;
+
+    color:
+        rgba(235,185,185,0.55);
+
+}
+
+
+.bottom-small {
+
+    margin-top: 7px;
+
+    font-size: 6px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(255,255,255,0.2);
+
+}
+
+
+/* =====================================================
+   FINAL REVEAL
+===================================================== */
+
+.reveal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 500;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #35151e,
+            #0a0507 65%
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 1.2s ease;
+
+}
+
+
+.reveal.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.reveal-content {
+
+    transform:
+        scale(0.75)
+        translateY(30px);
+
+    transition:
+        transform 1.3s
+        cubic-bezier(.16,1,.3,1);
+
+}
+
+
+.reveal.active
+.reveal-content {
+
+    transform:
+        scale(1)
+        translateY(0);
+
+}
+
+
+.reveal-flower {
+
+    font-size: 24px;
+
+    color:
+        rgba(240,190,190,0.8);
+
+    margin-bottom: 25px;
+
+}
+
+
+.reveal-name {
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size:
+        clamp(65px, 20vw, 120px);
+
+    letter-spacing: 8px;
+
+}
+
+
+.reveal-message {
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-size: 27px;
+
+    color:
+        rgba(237,190,190,0.8);
+
+    margin-top: 20px;
+
+}
+
+
+.reveal-hint {
+
+    margin-top: 40px;
+
+    font-size: 6px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(255,255,255,0.25);
+
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeIn {
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes fadeUp {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-height: 650px) {
+
+    .name {
+
+        font-size: 65px;
+
+    }
+
+    .script {
+
+        font-size: 22px;
+
+        margin-top: 18px;
+
+    }
+
+    .glass {
+
+        width: 190px;
+        height: 190px;
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL WIDTH
+===================================================== */
+
+@media (max-width: 350px) {
+
+    .name {
+
+        font-size: 57px;
+
+        letter-spacing: 3px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <h1>Hello Qais!</h1>
 
-    <div class="container">
-        <h1>Welcome to My Website 👋</h1>
+<!-- =================================================
+     CINEMATIC OPENING
+================================================= -->
 
-        <p>Elham jan look at my webiste i built it free and did the hosting for free also.</p>
+<div class="intro-screen" id="intro">
 
-        <button onclick="sayHello()">Click Me</button>
+    <div class="cinema-light"></div>
 
-        <p id="message"></p>
+    <div class="intro-title">
+        DIANA
     </div>
 
-    <script>
-        function sayHello() {
-            document.getElementById("message").textContent =
-                "Hello! You just used JavaScript 🎉";
+    <div class="intro-small">
+        something beautiful
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     MAIN SCENE
+================================================= -->
+
+<div class="scene" id="scene">
+
+
+    <!-- Glow -->
+
+    <div class="glow"></div>
+
+
+    <!-- Glass -->
+
+    <div class="glass"></div>
+
+
+    <!-- Flower -->
+
+    <div class="flower" id="flower">
+
+        <div class="flower-center"></div>
+
+    </div>
+
+
+    <!-- Falling petals -->
+
+    <div class="petals" id="petals"></div>
+
+
+    <!-- Frame -->
+
+    <div class="frame"></div>
+
+
+    <!-- Main content -->
+
+    <div class="content">
+
+        <div class="pre-title">
+            a little something
+        </div>
+
+
+        <div class="name" id="name">
+            DIANA
+        </div>
+
+
+        <div class="script">
+            simply unforgettable
+        </div>
+
+
+        <div class="divider">
+
+            <div class="line"></div>
+
+            <div class="symbol">
+                ✦
+            </div>
+
+            <div class="line right"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Bottom -->
+
+    <div class="bottom">
+
+        <div class="bottom-script">
+            made just for you
+        </div>
+
+        <div class="bottom-small">
+            touch the name
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     FINAL REVEAL
+================================================= -->
+
+<div class="reveal" id="reveal">
+
+    <div class="reveal-content">
+
+        <div class="reveal-flower">
+            ✦
+        </div>
+
+        <div class="reveal-name">
+            DIANA
+        </div>
+
+        <div class="reveal-message">
+            some names are impossible to forget.
+        </div>
+
+        <div class="reveal-hint">
+            tap anywhere
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CINEMATIC INTRO TIMING
+===================================================== */
+
+const intro =
+    document.getElementById("intro");
+
+
+setTimeout(() => {
+
+    intro.classList.add("hide");
+
+}, 4200);
+
+
+/* =====================================================
+   CREATE FLOWER PETALS
+===================================================== */
+
+const flower =
+    document.getElementById("flower");
+
+
+for (let i = 0; i < 10; i++) {
+
+    const petal =
+        document.createElement("div");
+
+    petal.className =
+        "petal";
+
+    petal.style.setProperty(
+        "--angle",
+        `${i * 36}deg`
+    );
+
+    petal.style.setProperty(
+        "--delay",
+        `${3.4 + i * 0.08}s`
+    );
+
+    flower.appendChild(petal);
+
+}
+
+
+/* =====================================================
+   CREATE FLOATING PETALS
+===================================================== */
+
+const petals =
+    document.getElementById("petals");
+
+
+for (let i = 0; i < 22; i++) {
+
+    const petal =
+        document.createElement("div");
+
+    petal.className =
+        "falling-petal";
+
+    petal.style.left =
+        Math.random() * 100 + "%";
+
+    petal.style.animationDuration =
+        (8 + Math.random() * 10) + "s";
+
+    petal.style.animationDelay =
+        (-Math.random() * 15) + "s";
+
+    petal.style.transform =
+        `rotate(${Math.random() * 360}deg)`;
+
+    petals.appendChild(petal);
+
+}
+
+
+/* =====================================================
+   NAME INTERACTION
+===================================================== */
+
+const name =
+    document.getElementById("name");
+
+const reveal =
+    document.getElementById("reveal");
+
+let taps = 0;
+
+
+name.addEventListener(
+    "pointerdown",
+    function() {
+
+        taps++;
+
+        name.style.transition =
+            "transform 0.35s ease";
+
+        name.style.transform =
+            "scale(0.93)";
+
+        setTimeout(() => {
+
+            name.style.transform =
+                "scale(1.04)";
+
+        }, 120);
+
+        setTimeout(() => {
+
+            name.style.transform =
+                "scale(1)";
+
+        }, 300);
+
+
+        /* second tap */
+
+        if (taps >= 2) {
+
+            setTimeout(() => {
+
+                reveal.classList.add("active");
+
+            }, 500);
+
         }
-    </script>
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE REVEAL
+===================================================== */
+
+reveal.addEventListener(
+    "pointerdown",
+    function() {
+
+        reveal.classList.remove("active");
+
+        taps = 0;
+
+    }
+);
+
+
+/* =====================================================
+   MOVING LIGHT
+===================================================== */
+
+const scene =
+    document.getElementById("scene");
+
+
+document.addEventListener(
+    "pointermove",
+    function(e) {
+
+        const rect =
+            scene.getBoundingClientRect();
+
+        const x =
+            ((e.clientX - rect.left)
+            / rect.width) * 100;
+
+        const y =
+            ((e.clientY - rect.top)
+            / rect.height) * 100;
+
+        scene.style.background = `
+
+            radial-gradient(
+                circle at ${x}% ${y}%,
+                rgba(128,57,70,0.30),
+                transparent 32%
+            ),
+
+            radial-gradient(
+                circle at 20% 80%,
+                rgba(105,40,55,0.16),
+                transparent 35%
+            ),
+
+            linear-gradient(
+                145deg,
+                #16090d,
+                #070405 55%,
+                #12070b
+            )
+
+        `;
+
+    }
+);
+
+
+/* =====================================================
+   PHONE TILT EFFECT
+===================================================== */
+
+if (
+    window.DeviceOrientationEvent
+) {
+
+    window.addEventListener(
+        "deviceorientation",
+        function(event) {
+
+            const x =
+                Math.max(
+                    -15,
+                    Math.min(
+                        15,
+                        event.gamma || 0
+                    )
+                );
+
+            const y =
+                Math.max(
+                    -15,
+                    Math.min(
+                        15,
+                        event.beta || 0
+                    )
+                );
+
+            const flower =
+                document.getElementById("flower");
+
+            flower.style.transform =
+                `translate(-50%,-50%)
+                 rotateX(${y * 0.4}deg)
+                 rotateY(${x * 0.4}deg)`;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   PREVENT LONG PRESS MENU
+===================================================== */
+
+document.addEventListener(
+    "contextmenu",
+    function(e) {
+
+        e.preventDefault();
+
+    }
+);
+
+</script>
+
 
 </body>
+
 </html>
